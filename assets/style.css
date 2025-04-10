@@ -1,0 +1,93 @@
+/* General style */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+h1 {
+    text-align: center;
+}
+
+/* Navbar styling */
+.navbar-brand {
+    font-family: "Tilt Warp", --bs-body-font-family, Arial, sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "XROT" 0, "YROT" 0;
+}
+.dropdown-menu-time {
+    width: 125%;
+    min-width: 350px !important;
+    padding-bottom: 0 !important;
+}
+.date-range-item {
+    height: 100%;
+}
+.dropdown-menu-language {
+    padding: 1rem;
+}
+.btn-group {
+    display: flex;
+    align-items: center;
+}
+.btn-group .btn-outline-danger {
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-left: 1px solid #ccc;
+}
+.btn-group-navbar {
+    position: relative;
+    display: inline-flex;
+}
+.beta-tag::after {
+    content: 'BETA';
+    margin-left: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 13px !important;
+    vertical-align: top;
+    color: var(--bs-danger);
+    border: 2px solid var(--bs-danger);
+    border-radius: 10px !important;
+}
+
+/* Footer styling */
+.footer-text {
+    --bs-text-opacity: 1;
+    color: var(--bs-secondary-color) !important;
+}
+.footer-text-muted {
+    color: color-mix(in srgb, var(--bs-secondary-color) 40%, transparent) !important;
+}
+
+/* Dark Mode Navbar */
+.navbar {
+    background-color: #efefef;
+}
+[data-bs-theme="dark"] .navbar {
+    background-color: #2a2a2b !important;
+}
+
+/* Table styling for bias analysis */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table th, table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Data styling */
+.firm-analysis {
+    margin-bottom: 40px;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+canvas {
+    max-width: 100%;
+    height: auto;
+}

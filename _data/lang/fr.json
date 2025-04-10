@@ -1,0 +1,91 @@
+{
+  "site": {
+    "title": "Audit des Sondages",
+    "description": "wow une description, chic",
+    "keywords": "Sondage d'opinion, sondage canadien, Canada, audit, vérification de sondage, sondeur, vérification de sondeur, audit électoral, sondage Canada, outil de suivi des sondages",
+    "locale": "fr_CA",
+    "alternativeLocale": "en_CA"
+  },
+  "general": {
+    "apply": "Appliquer"
+  },
+  "page": {
+    "generalPollingData": "Données Générales des Sondages",
+    "biasAnalysis": "Analyse de Biais",
+    "about": "À propos"
+  },
+  "footer": {
+    "contactUs": "Contactez-nous :",
+    "home": "Accueil",
+    "madeByCanadians": "Fait par des Canadiens qui vous ont à cœur"
+  },
+  "firm": {
+    "firm": "Firme",
+    "allFirms": "Toutes les Firmes",
+    "pollingFirm": "Firme de Sondage",
+    "highlightPollingFirm": "Surligner un Firme de Sondage"
+  },
+  "data": {
+    "party": "Parti",
+    "mean": "Moyenne",
+    "stdDev": "Écart-Type",
+    "houseEffect": "Effet Maison",
+    "outliers": "Valeurs Aberrantes",
+    "outlierRatio": "Ratio de Valeurs Aberrantes",
+    "trend": "Tendance (pente/jour)"
+  },
+  "chart": {
+    "firmTrendOverTime": "Tendance des Sondages par Firme au Fil du Temps",
+    "pollingPercentage": "Pourcentage des Sondages",
+    "others": "Autres",
+    "date": "Date",
+    "pollingPercentagesDistribution": "Distribution des Pourcentages de Sondage (Boîte à Moustaches)",
+    "distribution": "distribution"
+  },
+  "time": {
+    "selectDateRange": "Sélectionnez une période",
+    "all": "Toutes",
+    "last7Days": "Les 7 derniers jours",
+    "last30Days": "Les 30 derniers jours",
+    "last6Months": "Les 6 derniers mois",
+    "sinceLastElection": "Depuis la dernière élection",
+    "campaignPeriod": "Période de campagne",
+    "preCampaignPeriod": "Période de pré-campagne",
+    "to": "à",
+    "since": "Depuis",
+    "mustBeBefore": "La date de début ne peut pas être après la date de fin."
+  },
+  "404": {
+    "pageNotFound": "Page introuvable",
+    "pageNotFoundDesc": "La page demandée est introuvable."
+  },
+  "about": {
+    "titles": {
+      "transparencyMatters": "La transparence compte",
+      "goal": "L’objectif",
+      "supportTheProject": "Soutenir le projet"
+    },
+    "createdAndMaintained": "Ce site est créé et maintenu par",
+    "thatsMe": "Yep, c'est moi.",
+    "aboutMe": "Je suis un développeur logiciel senior \"senior software developer\". J’ai été frustré par",
+    "ekosTreason": "les crimes de EKOS contre les Canadiens",
+    "whileThe": "et par le fait que le",
+    "CRIC": "Conseil de recherche et d’intelligence marketing canadienne (CRIC)",
+    "didNothing": "n’a rien fait pour les arrêter.",
+    "discovered": "Puis, éventuellement, j'ai découvert que",
+    "thePresidentOfEkos": "le président de EKOS,",
+    "admittedItOnX": "a admis sa tromperie ouvertement sur <s>Twitter</s> X",
+    "seriously": "... Vraiment? Le CRIC fait quoi, lui?",
+    "breakingPoint": "Après ça, je n'en pouvais plus. J’ai décidé de consacrer une grande partie de mon temps à la création et à l’entretien de ce site. Il devait y avoir quelqu’un qui puisse tenir ces sondeurs (pollsters) responsables de leurs actions.",
+    "unlikePollsters": "À l’encontre de ces entreprises de sondages, je crois en la transparence et aux Canadiens. C’est pourquoi je rends public le code source de ce site. Ensemble, nous pouvons tracer un chemin vers une meilleure réglementation de ces compagnies.",
+    "wantToHelp": "Voulez-vous nous aider? Allez voir notre GitHub :",
+    "trustGone": "Pour pallier la perte de confiance envers le CRIC, je suis contraint de m’occuper moi-même de la tâche. En outre, les autres organismes d’évaluation et de vérification de la fiabilité des sondages le font en fonction des bureaux de vote pour les élections. Or, les sondeurs peuvent publier des sondages quelques jours seulement avant le scrutin, ce qui rend inutilisables les cotes sur lesquelles ils se fondent, puisque celles-ci s’avèrent naturellement très précises!",
+    "theGoal": "L’objectif est de concevoir un système capable de détecter avec précision les sondeurs malhonnêtes en s’appuyant sur des preuves statistiques qu’ils ne peuvent pas nier. Nous pouvons donc transmettre ces éléments de preuve au CRIC ou à la Chambre des communes afin qu’ils soient adéquatement sanctionnés.",
+    "everyDollar": "Chaque dollar généré par ce site est directement consacré au soutien du projet. Je n’ai pas besoin d’argent. J’aimerais plutôt l’utiliser pour embaucher d’autres développeurs qui pourraient contribuer à l’entretien et aux améliorations de la plateforme.",
+    "supportThrough": "Vous pouvez appuyer notre initiative grâce à %%, une plateforme qui assure une transparence complète sur l’ensemble de nos frais, ce qui est le strict minimum."
+  },
+  "faq": {
+    "frequentlyAskedQuestions": "Questions fréquemment posées",
+    "comingSoon": "À venir"
+  }
+}

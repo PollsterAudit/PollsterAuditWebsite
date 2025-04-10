@@ -1,0 +1,62 @@
+---
+permalink: /:language/about/
+languages:
+- en
+- fr
+---
+{% include top.html %}
+
+<div class="container">
+    <h3>{% t 'page.about' %}</h3><br>
+    <p>
+        {% t 'about.createdAndMaintained' %} <a href="https://github.com/FxMorin" target="_blank">FX Morin</a>. <i>{% t 'about.thatsMe' %}</i>
+    </p>
+    <p>
+        {% t 'about.aboutMe' %} <a href="{{ site.url }}/{{ page.language }}/?startDate=2024-10-10&endDate=2025-04-06?firm=ekos" target="_blank">{% t 'about.ekosTreason' %}</a> {% t 'about.whileThe' %}
+        <a href="https://www.canadianresearchinsightscouncil.ca/standards/por/" target="_blank">{% t 'about.CRIC' %}</a>
+        {% t 'about.didNothing' %}
+    </p>
+    <p>
+        {% t 'about.discovered' %}
+        <a href="https://en.wikipedia.org/wiki/Frank_Graves_(pollster)" target="_blank">Frank Graves</a>,
+        {% t 'about.thePresidentOfEkos' %} <a href="https://nationalpost.com/opinion/geoff-russ-ekos-boss-frank-graves-ill-advised-threat-to-keep-pierre-poilievre-from-winning" target="_blank">
+        {% t 'about.admittedItOnX' %}</a>{% t 'about.seriously' %}
+    </p>
+    <p>
+        {% t 'about.breakingPoint' %}
+    </p>
+
+    <br>
+    <h4>{% t 'about.titles.transparencyMatters' %}</h4>
+
+    <p>
+        {% t 'about.unlikePollsters' %}
+    </p>
+    <p>
+        {% t 'about.wantToHelp' %}
+        <a href="https://github.com/PollsterAudit" target="_blank">https://github.com/PollsterAudit</a>
+    </p>
+
+    <br>
+    <h4>{% t 'about.titles.goal' %}</h4>
+
+    <p>
+        {% t 'about.trustGone' %}
+    </p>
+    <p>
+        {% t 'about.theGoal' %}
+    </p>
+
+    <br>
+    <h4>{% t 'about.titles.supportTheProject' %}</h4>
+
+    <p>
+        {% t 'about.everyDollar' %}
+    </p>
+
+    <p>
+        {% t 'about.supportThrough': '<a href="https://opencollective.com/pollster-audit" target="_blank">Open Collective</a>' %}
+    </p>
+</div>
+
+{% include footer.html %}

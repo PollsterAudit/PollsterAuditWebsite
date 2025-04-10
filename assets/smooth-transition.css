@@ -1,0 +1,4 @@
+/* Animate dark mode color changes */
+* {
+    transition: background-color 0.25s ease-in-out !important;
+}

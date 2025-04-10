@@ -1,0 +1,28 @@
+---
+permalink: /:language/
+languages:
+- en
+- fr
+processApi: true
+---
+{% include top.html %}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-5">
+            <select id="firmSelector" class="form-select" aria-label="highlight polling firm">
+                <option value="" selected>- {% t 'firm.highlightPollingFirm' %} -</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div id="bias" class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
+            <canvas id="generalChart"></canvas>
+        </div>
+    </div>
+</div>
+
+{% include footer.html %}

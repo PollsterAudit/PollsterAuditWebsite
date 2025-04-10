@@ -1,0 +1,44 @@
+<script>
+    // Theme (dark/light)
+    let theme = getTheme();
+
+    function getTheme() {
+        return localStorage.getItem("theme") ||
+            (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    }
+    function saveTheme(theme) {
+        localStorage.setItem("theme", theme);
+    }
+    function applyTheme(theme) {
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.setAttribute('data-bs-theme', theme)
+    }
+    applyTheme(theme);
+
+    window.addEventListener('DOMContentLoaded', () => {
+        applyTheme(theme);
+        const themeToggler = document.getElementById("theme-toggle");
+        themeToggler.addEventListener("click", function(){
+            const newTheme = theme === "light" ? "dark" : "light";
+            applyTheme(newTheme);
+            saveTheme(newTheme);
+            theme = newTheme;
+        }, false);
+    });
+
+    // Language
+    function switchLanguage(language) {
+        localStorage.setItem("lang", language);
+        if (language !== '{{ page.language }}') {
+            window.location = window.location.href.replace("/{{ page.language }}/", "/" + language + "/");
+        }
+    }
+
+    let language = localStorage.getItem("lang");
+    if (language == null) { // No language set, check if they are on the right page
+        language = navigator.language.slice(0, 2).toLowerCase();
+    }
+    if (language !== '{{ page.language }}') {
+        switchLanguage(language);
+    }
+</script>
