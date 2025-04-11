@@ -39,7 +39,9 @@ jobs:
         with:
           ruby-version: '3.2' # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
+          cache-version: 1 # Increment this number if you need to re-download cached gems
+      - name: Set required environment variables
+        run: echo "PAGES_REPO_NWO=${{ github.repository }}" >> $GITHUB_ENV
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
