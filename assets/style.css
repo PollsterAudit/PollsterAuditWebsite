@@ -91,3 +91,7 @@ canvas {
     max-width: 100%;
     height: auto;
 }
+
+#generalChart {
+    min-height: 320px;
+}

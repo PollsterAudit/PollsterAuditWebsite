@@ -201,6 +201,7 @@ function drawGeneralChart() {
         options: {
             spanGaps: true,
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 x: {
                     offset: !disablePadding,
