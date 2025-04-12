@@ -58,10 +58,15 @@ language_includes_dir: _i18n
 # their entries' file path in the `include:` list.
 #
 exclude:
-   - .idea/
-   - .jekyll-cache/
-   - gemfiles/
-   - Gemfile
-   - Gemfile.lock
-   - node_modules/
-   - vendor
+  - CNAME
+  - LICENSE
+  - README.md
+  - CONTRIBUTING.md
+  - redirects.json
+  - .idea/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor
