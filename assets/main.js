@@ -1,5 +1,5 @@
 //region global variables
-const defaultHeadings = ["PollingFirm", "Date", "MarginOfError", "SampleSize", "Lead"];
+const defaultHeadings = ["PollingFirm", "Date", "Citation", "MarginOfError", "SampleSize"];
 // TODO: V Should be dynamic based on the data
 const parties = ["CPC", "LPC", "NDP", "BQ", "PPC", "GPC", "Others"];
 const colors = ["#36A2EB", "#FF6384", "#FF9F40", "#4BC0C0", "#9966FF", "#66FF66", "#FFCE56"];
@@ -82,6 +82,7 @@ function getApiTimeRange(from, to) {
     if (apiIndex == null) {
         return;
     }
+    let awaitingDownload = false;
     for (let yearName in apiIndex) {
         const year = apiIndex[yearName];
         const range = year["range"];
@@ -96,6 +97,7 @@ function getApiTimeRange(from, to) {
                 }
                 const periodRange = period["range"];
                 if (periodRange[1] >= from && periodRange[0] <= to) { // period.to >= from && period.from <= to
+                    awaitingDownload = true;
                     currentDownloadingTasks++;
                     fetch(period["url"])
                         .then(response => response.json())
@@ -117,6 +119,9 @@ function getApiTimeRange(from, to) {
                 }
             }
         }
+    }
+    if (!awaitingDownload) {
+        updateCharts();
     }
 }
 //endregion
@@ -201,6 +206,7 @@ function drawGeneralChart() {
         options: {
             spanGaps: true,
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 x: {
                     offset: !disablePadding,
@@ -234,12 +240,14 @@ function drawGeneralChart() {
                         }
                     }
                 },
-                zoom: zoomOptions
-            },
-            elements: {
-                line: {
-                    tension: 0,
-                    borderWidth: 1
+                zoom: zoomOptions,
+                regressionTrendline: {
+                    enabled: true,
+                    type: 'local',
+                    span: 0.25,         // 25% neighborhood
+                    degree: 2,          // local quadratic fit
+                    borderWidth: 2,
+                    weightField: 'weight'
                 }
             }
         }
@@ -325,20 +333,32 @@ function updateGeneralChartData(selectedFirm = null) {
             .map(d => ({
                 x: d.date,
                 y: d[p],
-                firm: d.PollingFirm
+                firm: d.PollingFirm,
+                SampleSize: d.SampleSize,
+                MarginOfError: d.MarginOfError
             }))
             .sort((a, b) => a.x - b.x);
 
+        // This is how we calculate weights per data point!
+        const weightedPartyData = WeightStrategies.applyWeights(
+            partyData,
+            WeightStrategies.combineWeightFns([
+                WeightStrategies.logScaled('SampleSize'),
+                WeightStrategies.inverseError('MarginOfError', 2.5)
+            ])
+        );
+
         newDatasets.push({
             label: p,
-            data: partyData,
+            data: weightedPartyData,
             borderColor: selectedFirm ? dimColors[index] : colors[index],
+            showLine: false, // We only want to show the trendline
             backgroundColor: selectedFirm ? dimColors[index] : colors[index],
             fill: false,
             borderWidth: selectedFirm ? 1 : 2,
             pointRadius: 2,
-            pointBackgroundColor: selectedFirm ? dimColors[index] : colors[index],
-            pointBorderColor: selectedFirm ? dimColors[index] : colors[index],
+            pointBackgroundColor: dimColors[index], //selectedFirm ? dimColors[index] : colors[index],
+            pointBorderColor: dimColors[index], //selectedFirm ? dimColors[index] : colors[index],
             pointHitRadius: 2
         });
     });
@@ -362,7 +382,10 @@ function updateGeneralChartData(selectedFirm = null) {
                     fill: false,
                     pointBackgroundColor: colors[index],
                     pointBorderColor: colors[index],
-                    pointHitRadius: 2
+                    pointHitRadius: 2,
+                    regressionTrendline: {
+                        showLine: false
+                    }
                 });
             }
         });
@@ -710,24 +733,28 @@ function setRangeToLastPeriod() {
         }
     }
     const period = year[latestPeriod];
-    currentDownloadingTasks++;
-    fetch(period["url"])
-        .then(response => response.json())
-        .then(data => {
-            currentDownloadingTasks--;
-            period["downloaded"] = true; // fast ignore
-            if (!(latestYear in apiAccess)) {
-                apiAccess[latestYear] = {};
-            }
-            apiAccess[latestYear][latestPeriod] = data;
-            if (currentDownloadingTasks === 0) {
-                updateCharts(true);
-            }
-        })
-        .catch(error => {
-            currentDownloadingTasks--;
-            console.error('Error:', error)
-        });
+    if (!period["downloaded"]) {
+        currentDownloadingTasks++;
+        fetch(period["url"])
+            .then(response => response.json())
+            .then(data => {
+                currentDownloadingTasks--;
+                period["downloaded"] = true; // fast ignore
+                if (!(latestYear in apiAccess)) {
+                    apiAccess[latestYear] = {};
+                }
+                apiAccess[latestYear][latestPeriod] = data;
+                if (currentDownloadingTasks === 0) {
+                    updateCharts(true);
+                }
+            })
+            .catch(error => {
+                currentDownloadingTasks--;
+                console.error('Error:', error)
+            });
+    } else {
+        updateCharts(true);
+    }
     disablePadding = false;
 }
 
