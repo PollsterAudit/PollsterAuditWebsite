@@ -240,12 +240,14 @@ function drawGeneralChart() {
                         }
                     }
                 },
-                zoom: zoomOptions
-            },
-            elements: {
-                line: {
-                    tension: 0,
-                    borderWidth: 1
+                zoom: zoomOptions,
+                regressionTrendline: {
+                    enabled: true,
+                    type: 'local',
+                    span: 0.25,         // 25% neighborhood
+                    degree: 2,          // local quadratic fit
+                    borderWidth: 2,
+                    weightField: 'weight'
                 }
             }
         }
@@ -331,20 +333,32 @@ function updateGeneralChartData(selectedFirm = null) {
             .map(d => ({
                 x: d.date,
                 y: d[p],
-                firm: d.PollingFirm
+                firm: d.PollingFirm,
+                SampleSize: d.SampleSize,
+                MarginOfError: d.MarginOfError
             }))
             .sort((a, b) => a.x - b.x);
 
+        // This is how we calculate weights per data point!
+        const weightedPartyData = WeightStrategies.applyWeights(
+            partyData,
+            WeightStrategies.combineWeightFns([
+                WeightStrategies.logScaled('SampleSize'),
+                WeightStrategies.inverseError('MarginOfError', 2.5)
+            ])
+        );
+
         newDatasets.push({
             label: p,
-            data: partyData,
+            data: weightedPartyData,
             borderColor: selectedFirm ? dimColors[index] : colors[index],
+            showLine: false, // We only want to show the trendline
             backgroundColor: selectedFirm ? dimColors[index] : colors[index],
             fill: false,
             borderWidth: selectedFirm ? 1 : 2,
             pointRadius: 2,
-            pointBackgroundColor: selectedFirm ? dimColors[index] : colors[index],
-            pointBorderColor: selectedFirm ? dimColors[index] : colors[index],
+            pointBackgroundColor: dimColors[index], //selectedFirm ? dimColors[index] : colors[index],
+            pointBorderColor: dimColors[index], //selectedFirm ? dimColors[index] : colors[index],
             pointHitRadius: 2
         });
     });
@@ -368,7 +382,10 @@ function updateGeneralChartData(selectedFirm = null) {
                     fill: false,
                     pointBackgroundColor: colors[index],
                     pointBorderColor: colors[index],
-                    pointHitRadius: 2
+                    pointHitRadius: 2,
+                    regressionTrendline: {
+                        showLine: false
+                    }
                 });
             }
         });
