@@ -1,5 +1,5 @@
 //region global variables
-const defaultHeadings = ["PollingFirm", "Date", "MarginOfError", "SampleSize", "Lead"];
+const defaultHeadings = ["PollingFirm", "Date", "Citation", "MarginOfError", "SampleSize"];
 // TODO: V Should be dynamic based on the data
 const parties = ["CPC", "LPC", "NDP", "BQ", "PPC", "GPC", "Others"];
 const colors = ["#36A2EB", "#FF6384", "#FF9F40", "#4BC0C0", "#9966FF", "#66FF66", "#FFCE56"];
@@ -82,6 +82,7 @@ function getApiTimeRange(from, to) {
     if (apiIndex == null) {
         return;
     }
+    let awaitingDownload = false;
     for (let yearName in apiIndex) {
         const year = apiIndex[yearName];
         const range = year["range"];
@@ -96,6 +97,7 @@ function getApiTimeRange(from, to) {
                 }
                 const periodRange = period["range"];
                 if (periodRange[1] >= from && periodRange[0] <= to) { // period.to >= from && period.from <= to
+                    awaitingDownload = true;
                     currentDownloadingTasks++;
                     fetch(period["url"])
                         .then(response => response.json())
@@ -117,6 +119,9 @@ function getApiTimeRange(from, to) {
                 }
             }
         }
+    }
+    if (!awaitingDownload) {
+        updateCharts();
     }
 }
 //endregion
@@ -711,24 +716,28 @@ function setRangeToLastPeriod() {
         }
     }
     const period = year[latestPeriod];
-    currentDownloadingTasks++;
-    fetch(period["url"])
-        .then(response => response.json())
-        .then(data => {
-            currentDownloadingTasks--;
-            period["downloaded"] = true; // fast ignore
-            if (!(latestYear in apiAccess)) {
-                apiAccess[latestYear] = {};
-            }
-            apiAccess[latestYear][latestPeriod] = data;
-            if (currentDownloadingTasks === 0) {
-                updateCharts(true);
-            }
-        })
-        .catch(error => {
-            currentDownloadingTasks--;
-            console.error('Error:', error)
-        });
+    if (!period["downloaded"]) {
+        currentDownloadingTasks++;
+        fetch(period["url"])
+            .then(response => response.json())
+            .then(data => {
+                currentDownloadingTasks--;
+                period["downloaded"] = true; // fast ignore
+                if (!(latestYear in apiAccess)) {
+                    apiAccess[latestYear] = {};
+                }
+                apiAccess[latestYear][latestPeriod] = data;
+                if (currentDownloadingTasks === 0) {
+                    updateCharts(true);
+                }
+            })
+            .catch(error => {
+                currentDownloadingTasks--;
+                console.error('Error:', error)
+            });
+    } else {
+        updateCharts(true);
+    }
     disablePadding = false;
 }
 
