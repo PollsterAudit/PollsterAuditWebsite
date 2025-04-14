@@ -251,7 +251,8 @@ function drawGeneralChart() {
                 }
             },
             locale: lang_site_locale,
-            normalized: true
+            normalized: true,
+            parsing: false
         }
     });
 }
@@ -561,7 +562,8 @@ function drawBiasAnalysis() {
                     }
                 },
                 locale: lang_site_locale,
-                normalized: true
+                normalized: true,
+                parsing: false
             }
         });
         applyZoomScale(latestChart);
@@ -606,7 +608,8 @@ function drawBiasAnalysis() {
                     }
                 },
                 locale: lang_site_locale,
-                normalized: true
+                normalized: true,
+                parsing: false
             }
         });
         applyZoomScale(boxChart);
