@@ -59,6 +59,17 @@
     "pageNotFound": "Page introuvable",
     "pageNotFoundDesc": "La page demandée est introuvable."
   },
+  "homepage": {
+    "holdingPollstersAccountable": "Tenir les sondeurs responsables",
+    "holdingPollstersAccountableDescription": "Les sondages influencent la perception du public, les récits médiatiques et même la participation électorale — pourtant, tous les sondeurs ne sont pas également fiables. Pollster Audit analyse les antécédents des firmes de sondage d’opinion canadiennes pour aider les citoyens, les journalistes et les chercheurs à prendre des décisions éclairées.",
+    "ourGoals": "Nos objectifs",
+    "goal1": "Offrir un accès facile aux données de sondages d’opinion publique",
+    "goal2": "Visualiser des données complexes dans des formats faciles à comprendre",
+    "goal3": "Expliquer les statistiques de façon accessible à tous",
+    "goal4": "Sensibiliser le public aux risques liés aux sondages d’opinion",
+    "goal5": "Identifier les sondeurs malhonnêtes à l’aide de données appuyées par des analyses statistiques",
+    "goal6": "Préconiser une réglementation et promouvoir des mesures de protection contre les abus"
+  },
   "about": {
     "titles": {
       "transparencyMatters": "La transparence compte",

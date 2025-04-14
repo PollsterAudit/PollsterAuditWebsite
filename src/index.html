@@ -7,22 +7,69 @@ processApi: true
 ---
 {% include top.html %}
 
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-5">
-            <select id="firmSelector" class="form-select" aria-label="highlight polling firm">
-                <option value="" selected>- {% t 'firm.highlightPollingFirm' %} -</option>
-            </select>
+<section class="py-3 border-bottom">
+    <div class="container">
+        <div class="row justify-content-md-center align-items-center text-center">
+            <div class="col">
+                <h3>{% t 'homepage.holdingPollstersAccountable' %}</h3>
+                <p class="fs-6">
+                    {% t 'homepage.holdingPollstersAccountableDescription' %}
+                </p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<div id="bias" class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
-    <div class="container-fluid">
+<section class="pb-4 pt-3_5 border-bottom">
+    <div class="container">
         <div class="row justify-content-md-center">
-            <canvas id="generalChart"></canvas>
+            <div class="col-5">
+                <select id="firmSelector" class="form-select" aria-label="highlight polling firm">
+                    <option value="" selected>- {% t 'firm.highlightPollingFirm' %} -</option>
+                </select>
+            </div>
         </div>
     </div>
-</div>
+
+    <div id="bias" class="container-xxl bd-gutter mt-3 bd-layout">
+        <div class="container-fluid">
+            <div class="row justify-content-md-center">
+                <canvas id="generalChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-4">
+    <div class="container">
+        <h3 class="text-center mb-3">{% t 'homepage.ourGoals' %}</h3>
+        <div class="d-flex align-items-center">
+            <div class="mx-auto flex-fill"></div>
+            <div class="d-inline-flex">
+                <div class="list-group list-group-flush fs-6 align-content-center flex-fill bullet-points">
+                    <div class="list-group-item">
+                        {% t 'homepage.goal1' %}
+                    </div>
+                    <div class="list-group-item">
+                        {% t 'homepage.goal2' %}
+                    </div>
+                    <div class="list-group-item">
+                        {% t 'homepage.goal3' %}
+                    </div>
+                    <div class="list-group-item">
+                        {% t 'homepage.goal4' %}
+                    </div>
+                    <div class="list-group-item">
+                        {% t 'homepage.goal5' %}
+                    </div>
+                    <div class="list-group-item">
+                        {% t 'homepage.goal6' %}
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto flex-fill"></div>
+        </div>
+    </div>
+</section>
 
 {% include footer.html %}

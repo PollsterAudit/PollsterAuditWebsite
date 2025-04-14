@@ -51,6 +51,12 @@ h1 {
     border-radius: 10px !important;
 }
 
+/* Bullet points for Lists */
+.bullet-points .list-group-item::before {
+    content: "●";
+    padding-right: 0.5em;
+}
+
 /* Footer styling */
 .footer-text {
     --bs-text-opacity: 1;
@@ -93,5 +99,10 @@ canvas {
 }
 
 #generalChart {
-    min-height: 320px;
+    min-height: 420px;
+}
+
+/* Bootstrap Additions */
+.pt-3_5 {
+    padding-top: 2rem !important;
 }

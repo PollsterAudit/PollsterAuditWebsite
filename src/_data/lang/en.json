@@ -59,6 +59,17 @@
     "pageNotFound": "Page not found",
     "pageNotFoundDesc": "The requested page could not be found."
   },
+  "homepage": {
+    "holdingPollstersAccountable": "Holding Pollsters Accountable",
+    "holdingPollstersAccountableDescription": "Polls influence public perception, media narratives, and even voter turnout — yet not all pollsters are equally reliable. Pollster Audit analyzes the track records of Canadian opinion polling companies to help citizens, journalists, and researchers make informed decisions.",
+    "ourGoals": "Our Goals",
+    "goal1": "Providing easy access to public opinion polling data",
+    "goal2": "Visualizing complex data in easy to understand formats",
+    "goal3": "Explaining statistics in a way that anyone can easily understand",
+    "goal4": "Educating the public on the risks of opinion polling",
+    "goal5": "Flagging dishonest pollsters using statistically backed data",
+    "goal6": "Advocating for regulations, and promoting safeguards against abuse"
+  },
   "about": {
     "titles": {
       "transparencyMatters": "Transparency Matters",
