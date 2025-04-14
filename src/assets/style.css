@@ -50,6 +50,18 @@ h1 {
     border: 2px solid var(--bs-danger);
     border-radius: 10px !important;
 }
+.nav-item.active { /* Make relative so we can add an absolute highlight below it */
+    position: relative;
+}
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    background: var(--bs-dark-bg-subtle);
+    width: 100%;
+    height: var(--bs-navbar-padding-y);
+    bottom: calc(0 - var(--bs-navbar-padding-y));
+    display: block;
+}
 
 /* Bullet points for Lists */
 .bullet-points .list-group-item::before {

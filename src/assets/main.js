@@ -249,7 +249,10 @@ function drawGeneralChart() {
                     borderWidth: 2,
                     weightField: 'weight'
                 }
-            }
+            },
+            locale: lang_site_locale,
+            normalized: true,
+            parsing: false
         }
     });
 }
@@ -557,7 +560,10 @@ function drawBiasAnalysis() {
                             }
                         }
                     }
-                }
+                },
+                locale: lang_site_locale,
+                normalized: true,
+                parsing: false
             }
         });
         applyZoomScale(latestChart);
@@ -600,7 +606,10 @@ function drawBiasAnalysis() {
                     y: {
                         grid: { color: theme === "dark" ? "#FFFFFF44" : "rgba(0,0,0,0.1)" },
                     }
-                }
+                },
+                locale: lang_site_locale,
+                normalized: true,
+                parsing: false
             }
         });
         applyZoomScale(boxChart);

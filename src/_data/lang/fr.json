@@ -10,13 +10,12 @@
     "apply": "Appliquer"
   },
   "page": {
-    "generalPollingData": "Données Générales des Sondages",
+    "home": "Accueil",
     "biasAnalysis": "Analyse de Biais",
     "about": "À propos"
   },
   "footer": {
     "contactUs": "Contactez-nous :",
-    "home": "Accueil",
     "madeByCanadians": "Fait par des Canadiens qui vous ont à cœur"
   },
   "firm": {
