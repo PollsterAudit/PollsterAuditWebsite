@@ -7,13 +7,16 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
-            <li class="nav-item active">
+            {% assign homepage = page.language | | prepend: "/" | append: "/" %}
+            {% assign biasAnalysis = page.language | | prepend: "/" | append: "/bias/" %}
+            {% assign about = page.language | | prepend: "/" | append: "/about/" %}
+            <li class="nav-item{% if page.dir == homepage %} active{% endif %}">
                 <a class="nav-link" href="{{ site.url }}/{{ page.language }}/">{% t 'page.generalPollingData' %}</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item{% if page.dir == biasAnalysis %} active{% endif %}">
                 <a class="nav-link" href="{{ site.url }}/{{ page.language }}/bias/">{% t 'page.biasAnalysis' %}</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item{% if page.dir == about %} active{% endif %}">
                 <a class="nav-link" href="{{ site.url }}/{{ page.language }}/about/">{% t 'page.about' %}</a>
             </li>
         </ul>
