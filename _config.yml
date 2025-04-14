@@ -19,7 +19,8 @@
 # in the templates via {{ site.myvariable }}.
 
 email: "contact@pollsteraudit.ca"
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: ""
+source: "src"
 url: "https://pollsteraudit.ca" # the base hostname & protocol for your site, e.g. http://example.com
 discord_invite: "6grVnjE3DC"
 github_username:  "PollsterAudit"
@@ -58,15 +59,4 @@ language_includes_dir: _i18n
 # their entries' file path in the `include:` list.
 #
 exclude:
-  - CNAME
-  - LICENSE
-  - README.md
-  - CONTRIBUTING.md
-  - redirects.json
-  - .idea/
-  - .jekyll-cache/
-  - gemfiles/
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
   - vendor
