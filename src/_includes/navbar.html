@@ -11,7 +11,7 @@
             {% assign biasAnalysis = page.language | | prepend: "/" | append: "/bias/" %}
             {% assign about = page.language | | prepend: "/" | append: "/about/" %}
             <li class="nav-item{% if page.dir == homepage %} active{% endif %}">
-                <a class="nav-link" href="{{ site.url }}/{{ page.language }}/">{% t 'page.generalPollingData' %}</a>
+                <a class="nav-link" href="{{ site.url }}/{{ page.language }}/">{% t 'page.home' %}</a>
             </li>
             <li class="nav-item{% if page.dir == biasAnalysis %} active{% endif %}">
                 <a class="nav-link" href="{{ site.url }}/{{ page.language }}/bias/">{% t 'page.biasAnalysis' %}</a>
