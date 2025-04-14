@@ -4,6 +4,8 @@ languages:
 - fr
 ---
 // Set all javascript langs here, so we don't duplicate the main source
+const lang_site_locale = "{% t 'site.locale' %}".replace("_", "-");
+
 const lang_firm_allFirms = "{% t 'firm.allFirms' %}";
 const lang_firm_pollingFirm = "{% t 'firm.pollingFirm' %}";
 
