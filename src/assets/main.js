@@ -674,7 +674,7 @@ function setRange(start, end, updateData=true, label=null) {
 
     if (start == null) {
         // TODO: end label?
-        setButtonLabel(label == null ? lang_time_all : label)
+        setButtonLabel(label == null ? lang_time_all : label);
         if (startDate == null) {
             updateDateRange(end, end, updateData);
         } else {
