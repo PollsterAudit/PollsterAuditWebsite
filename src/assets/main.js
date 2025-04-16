@@ -728,7 +728,7 @@ function setRangeToLastPeriod() {
         }
     }
     let latestPeriod;
-    latestTime = 0;
+    let latestRange = null;
     const year = apiIndex[latestYear];
     for (let periodName in year) {
         if (periodName === "range") {
@@ -736,8 +736,8 @@ function setRangeToLastPeriod() {
         }
         const period = year[periodName];
         const periodRange = period["range"];
-        if (periodRange[1] >= latestTime) {
-            latestTime = periodRange[1];
+        if (latestRange == null || periodRange[1] >= latestRange[1]) {
+            latestRange = periodRange;
             latestPeriod = periodName;
         }
     }
@@ -753,6 +753,12 @@ function setRangeToLastPeriod() {
                     apiAccess[latestYear] = {};
                 }
                 apiAccess[latestYear][latestPeriod] = data;
+                if (startDate == null) {
+                    startDate = new Date(latestRange[0]);
+                }
+                if (endDate == null) {
+                    endDate = new Date(latestRange[1]);
+                }
                 if (currentDownloadingTasks === 0) {
                     updateCharts(true);
                 }
@@ -765,6 +771,96 @@ function setRangeToLastPeriod() {
         updateCharts(true);
     }
     disablePadding = false;
+}
+
+/**
+ * Gets the start date of the last election in the data. <br>
+ * Last election won't be based on your current graph. Although we could implement that in the future
+ */
+function getLatestElectionStart() {
+    if (apiIndex == null) {
+        return null;
+    }
+    let latestYear;
+    let latestTime = 0;
+    for (let yearName in apiIndex) {
+        const year = apiIndex[yearName];
+        const range = year["range"];
+        if (range[1] >= latestTime) {
+            latestYear = yearName;
+            latestTime = range[1];
+        }
+    }
+    return new Date(apiIndex[latestYear]["range"][0])
+}
+
+/**
+ * Gets the date range of the last campaign period. <br>
+ * This will get the last years campaign period if we aren't currently in a campaign period.
+ * Should inform the user about this somehow.
+ * <p>
+ * Looks for the latest period with id `campaign_period` from the api.
+ */
+function getLatestCampaignPeriod() {
+    if (apiIndex == null) {
+        return null;
+    }
+    let latestYear;
+    let latestRange = null;
+    for (let yearName in apiIndex) {
+        const year = apiIndex[yearName];
+        if ("campaign_period" in year) {
+            const range = year["campaign_period"]["range"];
+            if (latestRange == null || range[1] >= latestRange[1]) {
+                latestYear = yearName;
+                latestRange = range;
+            }
+        }
+    }
+    return [new Date(latestRange[0]), new Date(latestRange[1])];
+}
+
+/**
+ * Gets the date range of the last pre-campaign period. <br>
+ * <p>
+ * Instead of looking for a period with id `pre-campaign_period`, we instead take the latest year and remove
+ * `campaign_period`. We do this since its possible that the pre-campaign graph got split. <p>
+ * E.x. 2004 has `campaign_period`, `pre-campaign_period`, & `pre-conservative`.
+ * Where the two last ones are technically both the per-campaign. <p>
+ * We don't currently account for a campaign period to split into two, as its incredibly unlikely that a party would
+ * do this halfway through a campaign period.
+ */
+function getLatestPreCampaignPeriod() {
+    if (apiIndex == null) {
+        return null;
+    }
+    let latestYear;
+    let latestTime = 0;
+    for (let yearName in apiIndex) {
+        const year = apiIndex[yearName];
+        const range = year["range"];
+        if (range[1] >= latestTime) {
+            latestYear = yearName;
+            latestTime = range[1];
+        }
+    }
+    let preCampaignRange = null;
+    for (let periodName in apiIndex[latestYear]) {
+        if (periodName !== "campaign_period" && periodName !== "range") {
+            const tempRange = apiIndex[latestYear][periodName]["range"];
+            if (preCampaignRange == null) {
+                preCampaignRange = tempRange;
+            } else {
+                if (tempRange[0] < preCampaignRange[0]) {
+                    preCampaignRange[0] = tempRange[0];
+                }
+                if (tempRange[1] > preCampaignRange[1]) {
+                    preCampaignRange[1] = tempRange[1];
+                }
+            }
+        }
+    }
+    return [new Date(preCampaignRange[0]), new Date(preCampaignRange[1])];
 }
 
 function setRangeFormat(range, fromStartup=true) {
@@ -790,22 +886,25 @@ function setRangeFormat(range, fromStartup=true) {
             end = endDate;
             label = lang_time_last6Months;
             break;
-        case 'sinceLastElection': // TODO: Determine last election
-            start = new Date();
+        case 'sinceLastElection':
+            start = getLatestElectionStart();
             end = endDate;
             label = lang_time_sinceLastElection;
             break;
-        case 'campaignPeriod': // TODO: This is currently the default
-            start = null;
-            end = endDate;
+        case 'campaignPeriod':
+            const campaignRange = getLatestCampaignPeriod();
+            start = campaignRange?.[0];
+            end = campaignRange?.[1] ?? endDate;
             label = lang_time_campaignPeriod;
             break;
-        case 'preCampaignPeriod': // TODO: Determine the last pre-campaign period
-            start = new Date();
-            end = endDate;
+        case 'preCampaignPeriod':
+            const preCampaignRange = getLatestPreCampaignPeriod();
+            start = preCampaignRange?.[0];
+            end = preCampaignRange?.[1] ?? endDate;
             label = lang_time_preCampaignPeriod;
             break;
         case 'all':
+            // This currently only returns all data that you've seen so far. No all data in general. This is intended
             start = null;
             end = endDate;
             label = lang_time_all;
