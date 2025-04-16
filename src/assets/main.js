@@ -741,36 +741,7 @@ function setRangeToLastPeriod() {
             latestPeriod = periodName;
         }
     }
-    const period = year[latestPeriod];
-    if (!period["downloaded"]) {
-        currentDownloadingTasks++;
-        fetch(period["url"])
-            .then(response => response.json())
-            .then(data => {
-                currentDownloadingTasks--;
-                period["downloaded"] = true; // fast ignore
-                if (!(latestYear in apiAccess)) {
-                    apiAccess[latestYear] = {};
-                }
-                apiAccess[latestYear][latestPeriod] = data;
-                if (startDate == null) {
-                    startDate = new Date(latestRange[0]);
-                }
-                if (endDate == null) {
-                    endDate = new Date(latestRange[1]);
-                }
-                if (currentDownloadingTasks === 0) {
-                    updateCharts(true);
-                }
-            })
-            .catch(error => {
-                currentDownloadingTasks--;
-                console.error('Error:', error)
-            });
-    } else {
-        updateCharts(true);
-    }
-    disablePadding = false;
+    return latestRange;
 }
 
 /**
@@ -992,7 +963,6 @@ function getParameters() {
 //region startup
 if (document.getElementById("dateRangeButton") != null) {
     loadApi(() => {
-        setRangeToLastPeriod();
         if ("startDate" in parameters || "endDate" in parameters) {
             let start = null;
             if ("startDate" in parameters) {
@@ -1004,6 +974,14 @@ if (document.getElementById("dateRangeButton") != null) {
                     (endDate == null ? new Date() : endDate),
                 true
             );
+        } else {
+            const range = setRangeToLastPeriod();
+            setRange(
+                range == null ? startDate : new Date(range[0]),
+                range == null ? endDate : new Date(range[1]),
+                true
+            );
+            disablePadding = false;
         }
 
         drawCharts();
