@@ -702,13 +702,15 @@ function setRange(start, end, updateData=true, label=null) {
         updateDateRange(start, end, updateData);
     }
     if (label !== lang_time_all) { // Default
+        const newStart = start == null ? null : formatDate(start);
+        const newEnd = (end == null || end === endDate) ? null : formatDate(end);
         let newUrl = updateUrlParameter(
-            updateUrlParameter(window.location.href, "startDate", start == null ? null : formatDate(start)),
+            updateUrlParameter(window.location.href, "startDate", newStart),
             "endDate",
-            (end == null || end === endDate) ? null : formatDate(end)
+            newEnd
         );
         if (window.location.href !== newUrl) {
-            window.history.pushState('', '', newUrl);
+            window.history.pushState({ startDate: newStart, endDate: newEnd }, '', newUrl);
         }
     }
 }
@@ -1013,13 +1015,14 @@ window.addEventListener('DOMContentLoaded', () => {
     if (firmSelector != null) {
         firmSelector.addEventListener("change", function(){
             updateCharts();
+            const firm = firmSelector.value === "" ? null : firmSelector.value;
             let newUrl = updateUrlParameter(
                 window.location.href,
                 "firm",
-                firmSelector.value === "" ? null : firmSelector.value
+                firm
             );
             if (window.location.href !== newUrl) {
-                window.history.pushState('', '', newUrl);
+                window.history.pushState({ firm: firm }, '', newUrl);
             }
         }, false);
     }
