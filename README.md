@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="200" height="200" src="https://raw.githubusercontent.com/PollsterAudit/PollsterAuditWebsite/refs/heads/main/assets/favicon/android-chrome-512x512.png" alt="PollsterAudit Logo"/>  
+<img width="200" height="200" src="https://raw.githubusercontent.com/PollsterAudit/PollsterAuditWebsite/refs/heads/main/src/assets/favicon/android-chrome-512x512.png" alt="PollsterAudit Logo"/>  
 
 --- 
 
