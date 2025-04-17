@@ -92,7 +92,8 @@
     "trustGone": "Pour pallier la perte de confiance envers le CRIC, je suis contraint de m’occuper moi-même de la tâche. En outre, les autres organismes d’évaluation et de vérification de la fiabilité des sondages le font en fonction des bureaux de vote pour les élections. Or, les sondeurs peuvent publier des sondages quelques jours seulement avant le scrutin, ce qui rend inutilisables les cotes sur lesquelles ils se fondent, puisque celles-ci s’avèrent naturellement très précises!",
     "theGoal": "L’objectif est de concevoir un système capable de détecter avec précision les sondeurs malhonnêtes en s’appuyant sur des preuves statistiques qu’ils ne peuvent pas nier. Nous pouvons donc transmettre ces éléments de preuve au CRIC ou à la Chambre des communes afin qu’ils soient adéquatement sanctionnés.",
     "everyDollar": "Chaque dollar généré par ce site est directement consacré au soutien du projet. Je n’ai pas besoin d’argent. J’aimerais plutôt l’utiliser pour embaucher d’autres développeurs qui pourraient contribuer à l’entretien et aux améliorations de la plateforme.",
-    "supportThrough": "Vous pouvez appuyer notre initiative grâce à %%, une plateforme qui assure une transparence complète sur l’ensemble de nos frais, ce qui est le strict minimum."
+    "supportThrough": "Vous pouvez appuyer notre initiative grâce à",
+    "thePlatform": ", une plateforme qui assure une transparence complète sur l’ensemble de nos frais, ce qui est le strict minimum."
   },
   "faq": {
     "frequentlyAskedQuestions": "Questions fréquemment posées",
