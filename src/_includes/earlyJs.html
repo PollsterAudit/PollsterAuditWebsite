@@ -30,7 +30,17 @@
     function switchLanguage(language) {
         localStorage.setItem("lang", language);
         if (language !== '{{ page.language }}') {
-            window.location = window.location.href.replace("/{{ page.language }}/", "/" + language + "/");
+            let alternativePage = "";
+            {% for language in site.languages %}
+              {% if page.language != language %}
+            if (language === "{{ language }}") {
+                alternativePage = "/{% td language 'slug' %}/";
+            }
+              {% endif %}
+            {% endfor %}
+            window.location = window.location.href
+                .replace("/{{ page.language }}/", "/" + language + "/")
+                .replace("/{% t 'slug' %}/", alternativePage);
         }
     }
 

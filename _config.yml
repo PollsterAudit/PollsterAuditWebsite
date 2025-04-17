@@ -30,7 +30,6 @@ maintainer: "FX Morin"
 country: "Canada"
 
 # Build settings
-theme: github-pages
 plugins:
   - jekyll-language-plugin
   - jekyll-redirect-from

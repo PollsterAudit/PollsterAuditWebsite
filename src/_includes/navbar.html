@@ -7,17 +7,14 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
-            {% assign homepage = page.language | | prepend: "/" | append: "/" %}
-            {% assign biasAnalysis = page.language | | prepend: "/" | append: "/bias/" %}
-            {% assign about = page.language | | prepend: "/" | append: "/about/" %}
-            <li class="nav-item{% if page.dir == homepage %} active{% endif %}">
+            <li class="nav-item{% if page.subset == 'homepage' %} active{% endif %}">
                 <a class="nav-link" href="{{ site.url }}/{{ page.language }}/">{% t 'page.home' %}</a>
             </li>
-            <li class="nav-item{% if page.dir == biasAnalysis %} active{% endif %}">
-                <a class="nav-link" href="{{ site.url }}/{{ page.language }}/bias/">{% t 'page.biasAnalysis' %}</a>
+            <li class="nav-item{% if page.subset == 'bias' %} active{% endif %}">
+                <a class="nav-link" href="{{ site.url }}/{{ page.language }}/{% t 'bias.slug' %}/">{% t 'page.biasAnalysis' %}</a>
             </li>
-            <li class="nav-item{% if page.dir == about %} active{% endif %}">
-                <a class="nav-link" href="{{ site.url }}/{{ page.language }}/about/">{% t 'page.about' %}</a>
+            <li class="nav-item{% if page.subset == 'about' %} active{% endif %}">
+                <a class="nav-link" href="{{ site.url }}/{{ page.language }}/{% t 'about.slug' %}/">{% t 'page.about' %}</a>
             </li>
         </ul>
         <div class="btn-group-navbar">

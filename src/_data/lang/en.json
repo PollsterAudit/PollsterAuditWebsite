@@ -12,7 +12,9 @@
   "page": {
     "home": "Home",
     "biasAnalysis": "Bias Analysis",
-    "about": "About"
+    "about": "About",
+    "faq": "FAQs",
+    "deepDive": "Deep Dive"
   },
   "footer": {
     "contactUs": "Contact Us:",
@@ -32,6 +34,9 @@
     "outliers": "Outliers",
     "outlierRatio": "Outlier Ratio",
     "trend": "Trend (slope/day)"
+  },
+  "bias": {
+    "slug": "bias"
   },
   "chart": {
     "firmTrendOverTime": "Firm Polling Trend Over Time",
@@ -55,10 +60,12 @@
     "mustBeBefore": "Start date cannot be after end date."
   },
   "404": {
+    "slug": "404",
     "pageNotFound": "Page not found",
     "pageNotFoundDesc": "The requested page could not be found."
   },
   "homepage": {
+    "slug": "home",
     "holdingPollstersAccountable": "Holding Pollsters Accountable",
     "holdingPollstersAccountableDescription": "Polls influence public perception, media narratives, and even voter turnout — yet not all pollsters are equally reliable. Pollster Audit analyzes the track records of Canadian opinion polling companies to help citizens, journalists, and researchers make informed decisions.",
     "ourGoals": "Our Goals",
@@ -70,6 +77,7 @@
     "goal6": "Advocating for regulations, and promoting safeguards against abuse"
   },
   "about": {
+    "slug": "about",
     "titles": {
       "transparencyMatters": "Transparency Matters",
       "goal": "Goal",
@@ -96,7 +104,11 @@
     "thePlatform": ". This platform ensures that all expenses remain fully transparent—the way it should be."
   },
   "faq": {
+    "slug": "faq",
     "frequentlyAskedQuestions": "Frequently Asked Questions",
     "comingSoon": "Coming Soon"
+  },
+  "deep_dive": {
+    "slug": "deep-dive"
   }
 }

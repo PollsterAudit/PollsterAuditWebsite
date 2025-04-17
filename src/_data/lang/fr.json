@@ -12,7 +12,9 @@
   "page": {
     "home": "Accueil",
     "biasAnalysis": "Analyse de Biais",
-    "about": "À propos"
+    "about": "À propos",
+    "faq": "FAQs",
+    "deepDive": "Plongée profonde"
   },
   "footer": {
     "contactUs": "Contactez-nous :",
@@ -32,6 +34,9 @@
     "outliers": "Valeurs Aberrantes",
     "outlierRatio": "Ratio de Valeurs Aberrantes",
     "trend": "Tendance (pente/jour)"
+  },
+  "bias": {
+    "slug": "biais"
   },
   "chart": {
     "firmTrendOverTime": "Tendance des Sondages par Firme au Fil du Temps",
@@ -55,10 +60,12 @@
     "mustBeBefore": "La date de début ne peut pas être après la date de fin."
   },
   "404": {
+    "slug": "404",
     "pageNotFound": "Page introuvable",
     "pageNotFoundDesc": "La page demandée est introuvable."
   },
   "homepage": {
+    "slug": "accueil",
     "holdingPollstersAccountable": "Tenir les sondeurs responsables",
     "holdingPollstersAccountableDescription": "Les sondages influencent la perception du public, les récits médiatiques et même la participation électorale — pourtant, tous les sondeurs ne sont pas également fiables. Pollster Audit analyse les antécédents des firmes de sondage d’opinion canadiennes pour aider les citoyens, les journalistes et les chercheurs à prendre des décisions éclairées.",
     "ourGoals": "Nos objectifs",
@@ -70,6 +77,7 @@
     "goal6": "Préconiser une réglementation et promouvoir des mesures de protection contre les abus"
   },
   "about": {
+    "slug": "a-propos",
     "titles": {
       "transparencyMatters": "La transparence compte",
       "goal": "L’objectif",
@@ -96,7 +104,11 @@
     "thePlatform": ", une plateforme qui assure une transparence complète sur l’ensemble de nos frais, ce qui est le strict minimum."
   },
   "faq": {
+    "slug": "faq",
     "frequentlyAskedQuestions": "Questions fréquemment posées",
     "comingSoon": "À venir"
+  },
+  "deep_dive": {
+    "slug": "plongee-profonde"
   }
 }
