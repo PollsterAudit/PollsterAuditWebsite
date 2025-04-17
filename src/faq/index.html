@@ -1,5 +1,6 @@
 ---
-permalink: /:language/faq/
+permalink: /:language/:t.slug/
+subset: faq
 languages:
 - en
 - fr
@@ -7,8 +8,8 @@ languages:
 {% include top.html %}
 
 <div class="container text-center">
-    <h3>{% t 'faq.frequentlyAskedQuestions' %}</h3>
-    <p>{% t 'faq.comingSoon' %}</p>
+    <h3>{% t 'frequentlyAskedQuestions' %}</h3>
+    <p>{% t 'comingSoon' %}</p>
 </div>
 
 {% include footer.html %}

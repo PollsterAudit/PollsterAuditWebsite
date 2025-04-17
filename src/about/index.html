@@ -1,5 +1,6 @@
 ---
-permalink: /:language/about/
+permalink: /:language/:t.slug/
+subset: about
 languages:
 - en
 - fr
@@ -9,53 +10,53 @@ languages:
 <div class="container">
     <h3>{% t 'page.about' %}</h3><br>
     <p>
-        {% t 'about.createdAndMaintained' %} <a href="https://github.com/FxMorin" target="_blank">FX Morin</a>. <i>{% t 'about.thatsMe' %}</i>
+        {% t 'createdAndMaintained' %} <a href="https://github.com/FxMorin" target="_blank">FX Morin</a>. <i>{% t 'thatsMe' %}</i>
     </p>
     <p>
-        {% t 'about.aboutMe' %} <a href="{{ site.url }}/{{ page.language }}/?firm=Ekos&startDate=2024-12-30&endDate=2025-04-06" target="_blank">{% t 'about.ekosTreason' %}</a> {% t 'about.whileThe' %}
-        <a href="https://www.canadianresearchinsightscouncil.ca/standards/por/" target="_blank">{% t 'about.CRIC' %}</a>
-        {% t 'about.didNothing' %}
+        {% t 'aboutMe' %} <a href="{{ site.url }}/{{ page.language }}/?firm=Ekos&startDate=2024-12-30&endDate=2025-04-06" target="_blank">{% t 'ekosTreason' %}</a> {% t 'whileThe' %}
+        <a href="https://www.canadianresearchinsightscouncil.ca/standards/por/" target="_blank">{% t 'CRIC' %}</a>
+        {% t 'didNothing' %}
     </p>
     <p>
-        {% t 'about.discovered' %}
+        {% t 'discovered' %}
         <a href="https://en.wikipedia.org/wiki/Frank_Graves_(pollster)" target="_blank">Frank Graves</a>,
-        {% t 'about.thePresidentOfEkos' %} <a href="https://nationalpost.com/opinion/geoff-russ-ekos-boss-frank-graves-ill-advised-threat-to-keep-pierre-poilievre-from-winning" target="_blank">
-        {% t 'about.admittedItOnX' %}</a>{% t 'about.seriously' %}
+        {% t 'thePresidentOfEkos' %} <a href="https://nationalpost.com/opinion/geoff-russ-ekos-boss-frank-graves-ill-advised-threat-to-keep-pierre-poilievre-from-winning" target="_blank">
+        {% t 'admittedItOnX' %}</a>{% t 'seriously' %}
     </p>
     <p>
-        {% t 'about.breakingPoint' %}
+        {% t 'breakingPoint' %}
     </p>
 
     <br>
-    <h4>{% t 'about.titles.transparencyMatters' %}</h4>
+    <h4>{% t 'titles.transparencyMatters' %}</h4>
 
     <p>
-        {% t 'about.unlikePollsters' %}
+        {% t 'unlikePollsters' %}
     </p>
     <p>
-        {% t 'about.wantToHelp' %}
+        {% t 'wantToHelp' %}
         <a href="https://github.com/{{ site.github_username }}" target="_blank">https://github.com/PollsterAudit</a>
     </p>
 
     <br>
-    <h4>{% t 'about.titles.goal' %}</h4>
+    <h4>{% t 'titles.goal' %}</h4>
 
     <p>
-        {% t 'about.trustGone' %}
+        {% t 'trustGone' %}
     </p>
     <p>
-        {% t 'about.theGoal' %}
+        {% t 'theGoal' %}
     </p>
 
     <br>
-    <h4>{% t 'about.titles.supportTheProject' %}</h4>
+    <h4>{% t 'titles.supportTheProject' %}</h4>
 
     <p>
-        {% t 'about.everyDollar' %}
+        {% t 'everyDollar' %}
     </p>
 
     <p>
-        {% t 'about.supportThrough': '<a href="https://opencollective.com/{{ site.opencollective }}" target="_blank">Open Collective</a>' %}
+        {% t 'supportThrough' %} <a href="https://opencollective.com/{{ site.opencollective }}" target="_blank">Open Collective</a>{% t 'thePlatform' %}
     </p>
 </div>
 

@@ -12,7 +12,9 @@
   "page": {
     "home": "Accueil",
     "biasAnalysis": "Analyse de Biais",
-    "about": "À propos"
+    "about": "À propos",
+    "faq": "FAQs",
+    "deepDive": "Plongée profonde"
   },
   "footer": {
     "contactUs": "Contactez-nous :",
@@ -32,6 +34,9 @@
     "outliers": "Valeurs Aberrantes",
     "outlierRatio": "Ratio de Valeurs Aberrantes",
     "trend": "Tendance (pente/jour)"
+  },
+  "bias": {
+    "slug": "biais"
   },
   "chart": {
     "firmTrendOverTime": "Tendance des Sondages par Firme au Fil du Temps",
@@ -55,10 +60,12 @@
     "mustBeBefore": "La date de début ne peut pas être après la date de fin."
   },
   "404": {
+    "slug": "404",
     "pageNotFound": "Page introuvable",
     "pageNotFoundDesc": "La page demandée est introuvable."
   },
   "homepage": {
+    "slug": "accueil",
     "holdingPollstersAccountable": "Tenir les sondeurs responsables",
     "holdingPollstersAccountableDescription": "Les sondages influencent la perception du public, les récits médiatiques et même la participation électorale — pourtant, tous les sondeurs ne sont pas également fiables. Pollster Audit analyse les antécédents des firmes de sondage d’opinion canadiennes pour aider les citoyens, les journalistes et les chercheurs à prendre des décisions éclairées.",
     "ourGoals": "Nos objectifs",
@@ -70,6 +77,7 @@
     "goal6": "Préconiser une réglementation et promouvoir des mesures de protection contre les abus"
   },
   "about": {
+    "slug": "a-propos",
     "titles": {
       "transparencyMatters": "La transparence compte",
       "goal": "L’objectif",
@@ -92,10 +100,15 @@
     "trustGone": "Pour pallier la perte de confiance envers le CRIC, je suis contraint de m’occuper moi-même de la tâche. En outre, les autres organismes d’évaluation et de vérification de la fiabilité des sondages le font en fonction des bureaux de vote pour les élections. Or, les sondeurs peuvent publier des sondages quelques jours seulement avant le scrutin, ce qui rend inutilisables les cotes sur lesquelles ils se fondent, puisque celles-ci s’avèrent naturellement très précises!",
     "theGoal": "L’objectif est de concevoir un système capable de détecter avec précision les sondeurs malhonnêtes en s’appuyant sur des preuves statistiques qu’ils ne peuvent pas nier. Nous pouvons donc transmettre ces éléments de preuve au CRIC ou à la Chambre des communes afin qu’ils soient adéquatement sanctionnés.",
     "everyDollar": "Chaque dollar généré par ce site est directement consacré au soutien du projet. Je n’ai pas besoin d’argent. J’aimerais plutôt l’utiliser pour embaucher d’autres développeurs qui pourraient contribuer à l’entretien et aux améliorations de la plateforme.",
-    "supportThrough": "Vous pouvez appuyer notre initiative grâce à %%, une plateforme qui assure une transparence complète sur l’ensemble de nos frais, ce qui est le strict minimum."
+    "supportThrough": "Vous pouvez appuyer notre initiative grâce à",
+    "thePlatform": ", une plateforme qui assure une transparence complète sur l’ensemble de nos frais, ce qui est le strict minimum."
   },
   "faq": {
+    "slug": "faq",
     "frequentlyAskedQuestions": "Questions fréquemment posées",
     "comingSoon": "À venir"
+  },
+  "deep_dive": {
+    "slug": "plongee-profonde"
   }
 }
