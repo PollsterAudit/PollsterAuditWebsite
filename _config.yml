@@ -33,6 +33,7 @@ country: "Canada"
 plugins:
   - jekyll-language-plugin
   - jekyll-redirect-from
+  - jekyll-sitemap
 
 defaults:
   -
