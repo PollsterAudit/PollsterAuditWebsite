@@ -505,7 +505,7 @@ function drawBiasAnalysis() {
         const trendCanvasWrapper = document.createElement("div");
         trendCanvasWrapper.classList.add("table-responsive");
         const trendCanvas = document.createElement("canvas");
-        trendCanvas.style.minHeight = "300px";
+        trendCanvas.style.minHeight = "320px";
         const trendCanvasId = "chart-firmTrend-" + firm.replace(/\s+/g, "_");
         trendCanvas.id = trendCanvasId;
         trendCanvasWrapper.appendChild(trendCanvas);
@@ -515,7 +515,7 @@ function drawBiasAnalysis() {
         const boxCanvasWrapper = document.createElement("div");
         boxCanvasWrapper.classList.add("table-responsive");
         const boxCanvas = document.createElement("canvas");
-        boxCanvas.style.minHeight = "300px";
+        boxCanvas.style.minHeight = "320px";
         const boxCanvasId = "chart-boxplot-" + firm.replace(/\s+/g, "_");
         boxCanvas.id = boxCanvasId;
         boxCanvasWrapper.appendChild(boxCanvas);
