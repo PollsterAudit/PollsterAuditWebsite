@@ -456,6 +456,10 @@ function drawBiasAnalysis() {
 
     const overallAverages = computeOverallAverages(data);
     container.innerHTML = ""; // Clear previous content
+    const loadingSpinner = document.getElementById("loading-spinner");
+    if (loadingSpinner !== null) {
+        loadingSpinner.style.display = "none";
+    }
 
     // Sort firms by poll count in descending order
     const sortedFirms = sortPollingFirms(data);
