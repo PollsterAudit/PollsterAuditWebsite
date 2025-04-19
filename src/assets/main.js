@@ -158,16 +158,17 @@ function computeMetricsForFirm(data, overallAverages) {
         const outliers = values.filter(v => Math.abs(v - mean) > 2 * std).length;
         const outlierRatio = count ? outliers / count : 0;
         // Trend: linear regression (convert dates to numeric)
-        const x = [], y = [];
+        const x = [];
+        const y = [];
         data.forEach(d => {
-            if (!isNaN(d[p]) && d.date instanceof Date && !isNaN(d.date.getTime())) {
-                x.push(d.date.getTime());
+            if (!isNaN(d[p])) {
+                x.push(d.date);
                 y.push(d[p]);
             }
         });
         const n = x.length;
         let slope = 0;
-        if(n > 1) {
+        if (n > 1) {
             const sumX = x.reduce((a, b) => a + b, 0);
             const sumY = y.reduce((a, b) => a + b, 0);
             const sumXY = x.reduce((acc, val, i) => acc + val * y[i], 0);
@@ -175,8 +176,8 @@ function computeMetricsForFirm(data, overallAverages) {
             slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
         }
         // Convert slope from per millisecond to per day
-        const slopePerDay = slope * (1000 * 60 * 60 * 24);
-        metrics[p] = { mean, std, houseEffect, outliers, outlierRatio, trendSlope: slopePerDay };
+        const trendSlope = slope * (1000 * 60 * 60 * 24);
+        metrics[p] = { mean, std, houseEffect, outliers, outlierRatio, trendSlope };
     });
     // Also compute overall firm metrics (e.g., average margin)
     const marginValues = data.map(d => d.MarginOfError).filter(v => !isNaN(v));
