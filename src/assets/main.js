@@ -365,12 +365,14 @@ function updateGeneralChartData(selectedFirm = null) {
             ])
         );
 
+        const meta = generalChart.getDatasetMeta(index);
         newDatasets.push({
             label: p,
             data: weightedPartyData,
             borderColor: selectedFirm ? dimColors[index] : colors[index],
             showLine: false, // We only want to show the trendline
             backgroundColor: selectedFirm ? dimColors[index] : colors[index],
+            hidden: meta?.hidden ?? meta?._dataset?.hidden ?? false,
             fill: false,
             borderWidth: selectedFirm ? 1 : 2,
             pointRadius: 2,
@@ -389,6 +391,7 @@ function updateGeneralChartData(selectedFirm = null) {
                 .sort((a, b) => a.x - b.x);
 
             if (firmData.length) {
+                const meta = generalChart.getDatasetMeta(parties.length + index);
                 newDatasets.push({
                     label: `${p} (${selectedFirm})`,
                     data: firmData,
@@ -396,6 +399,7 @@ function updateGeneralChartData(selectedFirm = null) {
                     backgroundColor: colors[index],
                     borderWidth: 2, // Thicker line for emphasis
                     pointRadius: 3,
+                    hidden: meta?.hidden ?? meta?._dataset?.hidden ?? false,
                     fill: false,
                     pointBackgroundColor: colors[index],
                     pointBorderColor: colors[index],
