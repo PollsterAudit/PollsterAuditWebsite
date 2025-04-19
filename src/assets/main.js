@@ -613,6 +613,12 @@ function drawBiasAnalysis() {
         });
         biasCharts.push(boxChart);
     });
+    if (sortedFirms.length % 2 === 1) { // Odd amount, so add a filler at the bottom
+        const firmDiv = document.createElement("div");
+        firmDiv.classList.add("col", "flex-md-grow-1");
+        firmDiv.style.flexGrow = "0";
+        container.appendChild(firmDiv);
+    }
 }
 
 function updateCharts(forceRangeUpdate = false) {
