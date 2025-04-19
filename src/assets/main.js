@@ -64,6 +64,10 @@ function loadApi(callback) {
     if (apiIndex == null || lastApiLoad < currentTime - 900000) {
         currentDownloadingTasks++;
         lastApiLoad = currentTime;
+        const loadingSpinner = document.getElementById("loading-spinner");
+        if (loadingSpinner !== null) {
+            loadingSpinner.style.display = "block";
+        }
         fetch('https://api.pollsteraudit.ca/v1/index.json')
             .then(response => response.json())
             .then(data => {
@@ -97,6 +101,10 @@ function getApiTimeRange(from, to) {
                 }
                 const periodRange = period["range"];
                 if (periodRange[1] >= from && periodRange[0] <= to) { // period.to >= from && period.from <= to
+                    const loadingSpinner = document.getElementById("loading-spinner");
+                    if (loadingSpinner !== null) {
+                        loadingSpinner.style.display = "block";
+                    }
                     awaitingDownload = true;
                     currentDownloadingTasks++;
                     fetch(period["url"])
