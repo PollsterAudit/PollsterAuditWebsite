@@ -9,6 +9,13 @@ processApi: true
 {% include top.html %}
 
 <div id="bias" class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
+    <div id="loading-spinner">
+        <div class="d-flex justify-content-center" style="min-height: 300px">
+            <div class="spinner-border align-self-center" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row" id="biasAnalysisContainer"></div>
     </div>
