@@ -313,11 +313,24 @@ function updateGeneralChartData(selectedFirm = null) {
     const firms = [...new Set(data.map(d => d.PollingFirm))];
 
     // Populate dropdown options
+    const optionValues = [];
+    for (let option of firmSelector.childNodes) {
+        if (option.value === undefined || option.value === "") {
+            continue;
+        }
+        if (!firms.includes(option.value)) {
+            firmSelector.removeChild(option);
+        } else {
+            optionValues.push(option.value);
+        }
+    }
     firms.forEach(firm => {
-        const option = document.createElement('option');
-        option.value = firm;
-        option.textContent = firm;
-        firmSelector.appendChild(option);
+        if (!optionValues.includes(firm)) {
+            const option = document.createElement('option');
+            option.value = firm;
+            option.textContent = firm;
+            firmSelector.appendChild(option);
+        }
     });
 
     if (!hasSetFirmParameter) {
