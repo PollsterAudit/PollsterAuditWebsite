@@ -158,16 +158,17 @@ function computeMetricsForFirm(data, overallAverages) {
         const outliers = values.filter(v => Math.abs(v - mean) > 2 * std).length;
         const outlierRatio = count ? outliers / count : 0;
         // Trend: linear regression (convert dates to numeric)
-        const x = [], y = [];
+        const x = [];
+        const y = [];
         data.forEach(d => {
-            if (!isNaN(d[p]) && d.date instanceof Date && !isNaN(d.date.getTime())) {
-                x.push(d.date.getTime());
+            if (!isNaN(d[p])) {
+                x.push(d.date);
                 y.push(d[p]);
             }
         });
         const n = x.length;
         let slope = 0;
-        if(n > 1) {
+        if (n > 1) {
             const sumX = x.reduce((a, b) => a + b, 0);
             const sumY = y.reduce((a, b) => a + b, 0);
             const sumXY = x.reduce((acc, val, i) => acc + val * y[i], 0);
@@ -175,8 +176,8 @@ function computeMetricsForFirm(data, overallAverages) {
             slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
         }
         // Convert slope from per millisecond to per day
-        const slopePerDay = slope * (1000 * 60 * 60 * 24);
-        metrics[p] = { mean, std, houseEffect, outliers, outlierRatio, trendSlope: slopePerDay };
+        const trendSlope = slope * (1000 * 60 * 60 * 24);
+        metrics[p] = { mean, std, houseEffect, outliers, outlierRatio, trendSlope };
     });
     // Also compute overall firm metrics (e.g., average margin)
     const marginValues = data.map(d => d.MarginOfError).filter(v => !isNaN(v));
@@ -312,11 +313,24 @@ function updateGeneralChartData(selectedFirm = null) {
     const firms = [...new Set(data.map(d => d.PollingFirm))];
 
     // Populate dropdown options
+    const optionValues = [];
+    for (let option of firmSelector.childNodes) {
+        if (option.value === undefined || option.value === "") {
+            continue;
+        }
+        if (!firms.includes(option.value)) {
+            firmSelector.removeChild(option);
+        } else {
+            optionValues.push(option.value);
+        }
+    }
     firms.forEach(firm => {
-        const option = document.createElement('option');
-        option.value = firm;
-        option.textContent = firm;
-        firmSelector.appendChild(option);
+        if (!optionValues.includes(firm)) {
+            const option = document.createElement('option');
+            option.value = firm;
+            option.textContent = firm;
+            firmSelector.appendChild(option);
+        }
     });
 
     if (!hasSetFirmParameter) {
@@ -351,12 +365,14 @@ function updateGeneralChartData(selectedFirm = null) {
             ])
         );
 
+        const meta = generalChart.getDatasetMeta(index);
         newDatasets.push({
             label: p,
             data: weightedPartyData,
             borderColor: selectedFirm ? dimColors[index] : colors[index],
             showLine: false, // We only want to show the trendline
             backgroundColor: selectedFirm ? dimColors[index] : colors[index],
+            hidden: meta?.hidden ?? meta?._dataset?.hidden ?? false,
             fill: false,
             borderWidth: selectedFirm ? 1 : 2,
             pointRadius: 2,
@@ -375,6 +391,7 @@ function updateGeneralChartData(selectedFirm = null) {
                 .sort((a, b) => a.x - b.x);
 
             if (firmData.length) {
+                const meta = generalChart.getDatasetMeta(parties.length + index);
                 newDatasets.push({
                     label: `${p} (${selectedFirm})`,
                     data: firmData,
@@ -382,6 +399,7 @@ function updateGeneralChartData(selectedFirm = null) {
                     backgroundColor: colors[index],
                     borderWidth: 2, // Thicker line for emphasis
                     pointRadius: 3,
+                    hidden: meta?.hidden ?? meta?._dataset?.hidden ?? false,
                     fill: false,
                     pointBackgroundColor: colors[index],
                     pointBorderColor: colors[index],
@@ -491,7 +509,7 @@ function drawBiasAnalysis() {
         const trendCanvasWrapper = document.createElement("div");
         trendCanvasWrapper.classList.add("table-responsive");
         const trendCanvas = document.createElement("canvas");
-        trendCanvas.style.minHeight = "300px";
+        trendCanvas.style.minHeight = "320px";
         const trendCanvasId = "chart-firmTrend-" + firm.replace(/\s+/g, "_");
         trendCanvas.id = trendCanvasId;
         trendCanvasWrapper.appendChild(trendCanvas);
@@ -501,7 +519,7 @@ function drawBiasAnalysis() {
         const boxCanvasWrapper = document.createElement("div");
         boxCanvasWrapper.classList.add("table-responsive");
         const boxCanvas = document.createElement("canvas");
-        boxCanvas.style.minHeight = "300px";
+        boxCanvas.style.minHeight = "320px";
         const boxCanvasId = "chart-boxplot-" + firm.replace(/\s+/g, "_");
         boxCanvas.id = boxCanvasId;
         boxCanvasWrapper.appendChild(boxCanvas);
@@ -607,14 +625,17 @@ function drawBiasAnalysis() {
                         grid: { color: theme === "dark" ? "#FFFFFF44" : "rgba(0,0,0,0.1)" },
                     }
                 },
-                locale: lang_site_locale,
-                normalized: true,
-                parsing: false
+                locale: lang_site_locale
             }
         });
-        applyZoomScale(boxChart);
         biasCharts.push(boxChart);
     });
+    if (sortedFirms.length % 2 === 1) { // Odd amount, so add a filler at the bottom
+        const firmDiv = document.createElement("div");
+        firmDiv.classList.add("col", "flex-md-grow-1");
+        firmDiv.style.flexGrow = "0";
+        container.appendChild(firmDiv);
+    }
 }
 
 function updateCharts(forceRangeUpdate = false) {
