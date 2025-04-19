@@ -608,12 +608,9 @@ function drawBiasAnalysis() {
                         grid: { color: theme === "dark" ? "#FFFFFF44" : "rgba(0,0,0,0.1)" },
                     }
                 },
-                locale: lang_site_locale,
-                normalized: true,
-                parsing: false
+                locale: lang_site_locale
             }
         });
-        applyZoomScale(boxChart);
         biasCharts.push(boxChart);
     });
 }
