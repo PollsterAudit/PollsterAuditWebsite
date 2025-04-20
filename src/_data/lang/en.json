@@ -14,7 +14,11 @@
     "biasAnalysis": "Bias Analysis",
     "about": "About",
     "faq": "FAQs",
-    "deepDive": "Deep Dive"
+    "deepDive": "Deep Dive",
+    "blog": "Blog",
+    "methodology": "Methodology",
+    "alerts": "Alerts",
+    "pollTracker": "Poll Tracker"
   },
   "footer": {
     "contactUs": "Contact Us:",
@@ -34,9 +38,6 @@
     "outliers": "Outliers",
     "outlierRatio": "Outlier Ratio",
     "trend": "Trend (slope/day)"
-  },
-  "bias": {
-    "slug": "bias"
   },
   "chart": {
     "firmTrendOverTime": "Firm Polling Trend Over Time",
@@ -76,6 +77,9 @@
     "goal5": "Flagging dishonest pollsters using statistically backed data",
     "goal6": "Advocating for regulations, and promoting safeguards against abuse"
   },
+  "bias": {
+    "slug": "bias"
+  },
   "about": {
     "slug": "about",
     "titles": {
@@ -109,6 +113,23 @@
     "comingSoon": "Coming Soon"
   },
   "deep_dive": {
-    "slug": "deep-dive"
+    "slug": "deep-dive",
+    "futurePlans": "This page will allow you to do a much deeper dive into a single pollster's stats"
+  },
+  "methodology": {
+    "slug": "methodology",
+    "futurePlans": "This page explains our methodology. How we evaluate and determine corrupt behavior."
+  },
+  "blog": {
+    "slug": "blog",
+    "futurePlans": "Our blog, where we share our findings and progress towards a better opinion polling system."
+  },
+  "alerts": {
+    "slug": "alerts",
+    "futurePlans": "This page displays all the automated alerts triggered by the statistical data."
+  },
+  "poll_tracker": {
+    "slug": "poll-tracker",
+    "futurePlans": "Canadian opinion polling tracker. A more advanced poll tracker compared to our homepage."
   }
 }

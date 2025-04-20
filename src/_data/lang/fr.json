@@ -14,7 +14,11 @@
     "biasAnalysis": "Analyse de Biais",
     "about": "À propos",
     "faq": "FAQs",
-    "deepDive": "Plongée profonde"
+    "deepDive": "Plongée profonde",
+    "blog": "Blog",
+    "methodology": "Méthodologie",
+    "alerts": "Alertes",
+    "pollTracker": "Suivi des sondages"
   },
   "footer": {
     "contactUs": "Contactez-nous :",
@@ -34,9 +38,6 @@
     "outliers": "Valeurs Aberrantes",
     "outlierRatio": "Ratio de Valeurs Aberrantes",
     "trend": "Tendance (pente/jour)"
-  },
-  "bias": {
-    "slug": "biais"
   },
   "chart": {
     "firmTrendOverTime": "Tendance des Sondages par Firme au Fil du Temps",
@@ -76,6 +77,9 @@
     "goal5": "Identifier les sondeurs malhonnêtes à l’aide de données appuyées par des analyses statistiques",
     "goal6": "Préconiser une réglementation et promouvoir des mesures de protection contre les abus"
   },
+  "bias": {
+    "slug": "biais"
+  },
   "about": {
     "slug": "a-propos",
     "titles": {
@@ -109,6 +113,23 @@
     "comingSoon": "À venir"
   },
   "deep_dive": {
-    "slug": "plongee-profonde"
+    "slug": "plongee-profonde",
+    "futurePlans": "Cette page vous permettra de plonger beaucoup plus profondément dans les statistiques d'un seul sondeur."
+  },
+  "methodology": {
+    "slug": "methodologie",
+    "futurePlans": "Cette page explique notre méthodologie. comment nous évaluons et détectons les comportements corrompus."
+  },
+  "blog": {
+    "slug": "blog",
+    "futurePlans": "Notre blog, où nous partageons nos conclusions et nos progrès vers un meilleur système de sondage d'opinion."
+  },
+  "alerts": {
+    "slug": "alertes",
+    "futurePlans": "Cette page affiche toutes les alertes automatisées déclenchées par les données statistiques."
+  },
+  "poll_tracker": {
+    "slug": "suivi-des-sondages",
+    "futurePlans": "Outil de suivi des sondages d'opinion canadiens. Un outil plus avancé que celui de notre page d'accueil."
   }
 }
